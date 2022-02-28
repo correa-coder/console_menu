@@ -30,4 +30,18 @@ class Text:
         self.color = color
 
     def show(self):
-        pass
+        print(self.content)
+
+
+
+# quick testing
+if __name__ == '__main__':
+    # testing text output in different colors
+    dummy_texts = [
+        Text('Success', 'green'),
+        Text('Info', 'blue'),
+        Text('Error', 'red')
+    ]
+    
+    for text in dummy_texts:
+        text.show()
