@@ -40,7 +40,7 @@ class Text:
         color_codes = {
             'red': 31,
             'green': 32,
-            'blue': 33
+            'blue': 34
         }
 
         # if color not in color_codes return the original text
