@@ -30,7 +30,26 @@ class Text:
         self.color = color
 
     def show(self):
-        print(self.content)
+        print(self.colorize(self.content, self.color))
+
+    @staticmethod
+    def colorize(text, color='default'):
+        """
+        returns a string wrapped with ANSI color code
+        """
+        color_codes = {
+            'red': 31,
+            'green': 32,
+            'blue': 33
+        }
+
+        # if color not in color_codes return the original text
+        result = text
+        
+        if color in color_codes:
+            result = f"\033[{color_codes[color]}m{text}\033[m"
+
+        return result
 
 
 
