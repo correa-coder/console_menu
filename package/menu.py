@@ -34,6 +34,10 @@ class MenuItem:
         self.color = color
         self.sub_menu = sub_menu
 
+    def show(self):
+        """prints the self.title value with the color specified in self.color"""
+        print(Text.colorize(self.title, self.color))
+
     def run(self):
         pass
     
@@ -54,6 +58,8 @@ class Menu:
 
 # quick testing
 if __name__ == '__main__':
+    # TODO: create a separate test file
+
     # testing text output in different colors
     dummy_texts = [
         Text('Success', 'green'),
@@ -63,3 +69,15 @@ if __name__ == '__main__':
     
     for text in dummy_texts:
         text.show()
+
+
+    # testing menu items
+    menu_items = [
+        MenuItem('Strawberry', color='red'),
+        MenuItem('Avocado', color='green'),
+        MenuItem('Exit', lambda quit: exit)
+    ]
+
+    for item in menu_items:
+        item.show()
+        item.run()
