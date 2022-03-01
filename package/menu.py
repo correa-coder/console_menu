@@ -39,7 +39,10 @@ class MenuItem:
         print(Text.colorize(self.title, self.color))
 
     def run(self):
-        pass
+        if self.func is not None:
+            # check if it's a function
+            if callable(self.func):
+                self.func()
     
 
 class Menu:
@@ -74,8 +77,9 @@ if __name__ == '__main__':
     # testing menu items
     menu_items = [
         MenuItem('Strawberry', color='red'),
-        MenuItem('Avocado', color='green'),
-        MenuItem('Exit', lambda quit: exit)
+        MenuItem('Avocado', lambda: print("This is an Avocado"), color='green'),
+        MenuItem('Mango', [], color='blue'), # not a function passed to self.func (edge case)
+        MenuItem('Exit', lambda: exit),
     ]
 
     for item in menu_items:
