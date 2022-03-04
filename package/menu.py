@@ -59,29 +59,5 @@ class Menu:
         pass
 
 
-# quick testing
 if __name__ == '__main__':
-    # TODO: create a separate test file
-
-    # testing text output in different colors
-    dummy_texts = [
-        Text('Success', 'green'),
-        Text('Info', 'blue'),
-        Text('Error', 'red')
-    ]
-    
-    for text in dummy_texts:
-        text.show()
-
-
-    # testing menu items
-    menu_items = [
-        MenuItem('Strawberry', color='red'),
-        MenuItem('Avocado', lambda: print("This is an Avocado"), color='green'),
-        MenuItem('Mango', [], color='blue'), # not a function passed to self.func (edge case)
-        MenuItem('Exit', lambda: exit),
-    ]
-
-    for item in menu_items:
-        item.show()
-        item.run()
+    pass
