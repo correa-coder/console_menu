@@ -80,8 +80,15 @@ class Menu:
         selected = input("Select an option: ").strip()
 
         if not selected.isnumeric():
-            print("Finished!")
+            print("\nFinished!")
         else:
+            # run the function from the selected menu item
+            print()
+            self.menu_items[int(selected) - 1].run()
+            print()
+
+            # restarts the menu
+            input("Press any key to continue...")
             self.mainloop()
 
 
