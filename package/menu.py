@@ -60,14 +60,23 @@ class Menu:
         else:
             self.menu_items = menu_items
 
-    def mainloop(self):
-        for index, menu_item in enumerate(self.menu_items):
-            if isinstance(menu_item, Menu):
-                menu_item.mainloop()
-            else:
-                print(f"{index+1}. {menu_item.value}")
+    def show_dashes(self):
+        """prints dashes of the length of the self.title"""
+        print('-' * len(self.title))
 
-        print("Enter 'exit' to quit")
+    def mainloop(self):
+        # show the menu title
+        self.show_dashes()
+        print(self.title)
+        self.show_dashes()
+
+        # show the menu items
+        for index, menu_item in enumerate(self.menu_items):
+            print(f"{index+1}. {menu_item.value}")
+
+        print("\nEnter 'exit' to quit\n")
+
+        # input for selecting an item in the menu
         selected = input("Select an option: ").strip()
 
         if not selected.isnumeric():
