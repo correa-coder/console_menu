@@ -34,9 +34,14 @@ class MenuItem:
         self.color = color
         self.sub_menu = sub_menu
 
+    @property
+    def value(self):
+        """returns the self.title value with the color specified in self.color"""
+        return Text.colorize(self.title, self.color)
+
     def show(self):
         """prints the self.title value with the color specified in self.color"""
-        print(Text.colorize(self.title, self.color))
+        print(self.value)
 
     def run(self):
         if self.func is not None:
@@ -60,7 +65,7 @@ class Menu:
             if isinstance(menu_item, Menu):
                 menu_item.mainloop()
             else:
-                menu_item.show()
+                print(f"{index+1}. {menu_item.value}")
 
         print("Enter 'exit' to quit")
         selected = input("Select an option: ").strip()
