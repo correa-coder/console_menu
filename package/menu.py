@@ -56,8 +56,18 @@ class Menu:
             self.menu_items = menu_items
 
     def mainloop(self):
-        pass
+        for index, menu_item in enumerate(self.menu_items):
+            if isinstance(menu_item, Menu):
+                menu_item.mainloop()
+            else:
+                menu_item.show()
 
 
 if __name__ == '__main__':
-    pass
+    items = [
+        MenuItem("test", color="red", func=lambda:print("test")),
+        MenuItem("test 2", color="blue", func=lambda:print("test 2"), sub_menu=MenuItem("sub item", color="red"))
+    ]
+
+    m = Menu("Test", items)
+    m.mainloop()
