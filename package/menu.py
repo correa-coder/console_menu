@@ -62,6 +62,14 @@ class Menu:
             else:
                 menu_item.show()
 
+        print("Enter 'exit' to quit")
+        selected = input("Select an option: ").strip()
+
+        if not selected.isnumeric():
+            print("Finished!")
+        else:
+            self.mainloop()
+
 
 if __name__ == '__main__':
     items = [
