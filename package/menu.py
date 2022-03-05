@@ -79,9 +79,7 @@ class Menu:
         # input for selecting an item in the menu
         selected = input("Select an option: ").strip()
 
-        if not selected.isnumeric():
-            print("\nFinished!")
-        else:
+        if selected.isnumeric():
             # run the function from the selected menu item
             print()
             self.menu_items[int(selected) - 1].run()
