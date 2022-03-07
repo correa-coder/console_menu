@@ -86,7 +86,7 @@ class Menu:
             print()
 
             # restarts the menu
-            input("Press any key to continue...")
+            input("Press enter to continue...")
             self.mainloop()
 
 
