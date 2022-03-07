@@ -56,15 +56,15 @@ class Menu:
         else:
             self.menu_items = menu_items
 
-    def show_dashes(self):
+    def print_dashes(self):
         """prints dashes of the length of the self.title"""
         print('-' * len(self.title))
 
     def mainloop(self):
         # show the menu title
-        self.show_dashes()
+        self.print_dashes()
         print(self.title)
-        self.show_dashes()
+        self.print_dashes()
 
         # show the menu items
         for index, menu_item in enumerate(self.menu_items):
