@@ -77,12 +77,21 @@ class Menu:
         print("\nEnter 'exit' to quit\n")
 
         # input for selecting an item in the menu
-        selected = input("Select an option: ").strip()
+        selected_index = input("Select an option: ").strip()
 
-        if selected.isnumeric():
-            # run the function from the selected menu item
+        # run the function from the selected menu item
+        if selected_index.isnumeric():
+            selected_index = int(selected_index) - 1
+            selected_menu = self.menu_items[selected_index]
+
             print()
-            self.menu_items[int(selected) - 1].run()
+
+            # if the menu has a sub menu call the sub menu mainloop()
+            if selected_menu.sub_menu is not None:
+                selected_menu.sub_menu.mainloop()
+            else:
+                selected_menu.run()
+
             print()
 
             # restarts the menu
@@ -91,9 +100,11 @@ class Menu:
 
 
 if __name__ == '__main__':
+    sub = Menu("Sub menu", [MenuItem("Sub item 1"), MenuItem("Sub item 2", color="blue")])
+
     items = [
         MenuItem("test", color="red", func=lambda:print("test")),
-        MenuItem("test 2", color="blue", func=lambda:print("test 2"), sub_menu=MenuItem("sub item", color="red"))
+        MenuItem("test 2", color="blue", func=lambda:print("test 2"), sub_menu=sub)
     ]
 
     m = Menu("Test", items)
