@@ -39,10 +39,6 @@ class MenuItem:
         """returns the self.title value with the color specified in self.color"""
         return Text.colorize(self.title, self.color)
 
-    def show(self):
-        """prints the self.title value with the color specified in self.color"""
-        print(self.value)
-
     def run(self):
         if self.func is not None:
             # check if it's a function
