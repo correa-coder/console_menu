@@ -3,7 +3,7 @@
 ## MenuItem
 
 ```python
-MenuItem(title, func=None, color='default', sub_menu=None)
+MenuItem(title, func=None, color='default')
 ```
 
 Represents an option in the menu, the `title` attribute is the label for the menu item: represents what this menu option should do, `func` is a function that will run when selecting this menu item.
@@ -13,8 +13,6 @@ The following colors are available for the `color` attribute:
 - green
 - blue
 - default
-
-&rarr; Menu items works as tree like structure allowing them to have sub menus.
 
 ### Methods
 `run()`

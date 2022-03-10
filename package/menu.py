@@ -28,16 +28,10 @@ class Text:
 
 class MenuItem:
     """represents an option in the menu"""
-    def __init__(self, title, func=None, color='default', sub_menu=None):
+    def __init__(self, title, func=None, color='default'):
         self.title = title
         self.func = func
         self.color = color
-        self.sub_menu = sub_menu
-        self.parent_menu = None
-
-        # assign this menu item as a parent to the child menu
-        if sub_menu is not None:
-            sub_menu.parent_menu = self
 
     @property
     def value(self):
@@ -55,21 +49,11 @@ class Menu:
     """container for MenuItem objects"""
     def __init__(self, title='main menu', menu_items=None):
         self.title = title
-        self.parent_menu = None
-        self.sub_menu = None
 
         if menu_items is None:
             self.menu_items = []
         else:
             self.menu_items = menu_items
-
-            # if it's a sub menu add an option to return to parent menu
-            if self.parent_menu is not None:
-                self.menu_items.append(MenuItem("Return", self.parent_menu.mainloop))
-
-            # add this menu as a parent to the sub menus
-            for item in self.menu_items:
-                item.parent_menu = self
 
     def print_dashes(self):
         """prints dashes of the length of the self.title"""
@@ -89,34 +73,18 @@ class Menu:
 
         # input for selecting an item in the menu
         selected_index = input("Select an option: ").strip()
-
-        # run the function from the selected menu item
+        
         if selected_index.isnumeric():
             selected_index = int(selected_index) - 1
             selected_menu = self.menu_items[selected_index]
 
-            print()
-
-            # if the menu has a sub menu call the sub menu mainloop()
-            if selected_menu.sub_menu is not None:
-                selected_menu.sub_menu.mainloop()
-            else:
-                selected_menu.run()
-
-            print()
+            # run the function from the selected menu item
+            selected_menu.run()
 
             # restarts the menu
-            input("Press enter to continue...")
+            input("\nPress enter to continue...")
             self.mainloop()
 
 
 if __name__ == '__main__':
-    sub = Menu("Sub menu", [MenuItem("Sub item 1"), MenuItem("Sub item 2", color="blue")])
-
-    items = [
-        MenuItem("test", color="red", func=lambda:print("test")),
-        MenuItem("test 2", color="blue", func=lambda:print("test 2"), sub_menu=sub)
-    ]
-
-    m = Menu("Test", items)
-    m.mainloop()
+    pass
